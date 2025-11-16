@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haldiram's Interactive CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FDB813 0%, #FF6B35 100%);
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            cursor: pointer;
+            transition: opacity 0.5s;
+        }
+
+        #canvas-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .instruction {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        #cv-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        #cv-container.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cv-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+        }
+
+        .cv-header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #FDB813 0%, #FF6B35 100%);
+            color: white;
+            margin: -40px -20px 40px -20px;
+        }
+
+        .cv-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .cv-header p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        .cv-section {
+            margin-bottom: 40px;
+        }
+
+        .cv-section h2 {
+            font-size: 28px;
+            color: #FF6B35;
+            border-bottom: 3px solid #FDB813;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .cv-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .cv-section p, .cv-section li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .cv-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cv-section li:before {
+            content: "🌶️ ";
+            margin-right: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: #FFF5E6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #FDB813;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50px;
+            z-index: 101;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .close-btn:hover {
+            background: #E55A2B;
+        }
+
+        .contact-links a {
+            color: #0000ff;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="instruction">
+        Scroll to rotate 🌶️ Click to open CV
+    </div>
+
+    <div id="cv-container">
+        <button class="close-btn" onclick="closeCV()">✕ Close</button>
+        <div class="cv-content">
+            <div class="cv-header">
+                <h1>Nikhil XD</h1>
+                <p>Full Stack Developer & Creative Technologist</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>About Me</h2>
+                <p>Passionate developer with expertise in creating interactive web experiences. I blend creativity with technical skills to build engaging digital products.</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>Frontend</h3>
+                        <p>HTML, CSS, JavaScript, Three.js, React</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Backend</h3>
+                        <p>Node.js, Python, APIs</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>3D & Graphics</h3>
+                        <p>Three.js, WebGL, 3D Modeling</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Tools</h3>
+                        <p>Git, GitHub, VS Code</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Projects</h2>
+                <h3>Interactive 3D Portfolio</h3>
+                <p>Created immersive web experiences using Three.js and modern web technologies.</p>
+                
+                <h3>Y2K Portfolio Website</h3>
+                <p>Nostalgic portfolio design with rotating 3D elements and classic web aesthetics.</p>
+                
+                <h3>Haldiram's CV Experience</h3>
+                <p>Innovative CV presentation using 3D product visualization and scroll interactions.</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>Education</h2>
+                <h3>Computer Science</h3>
+                <p>Bachelor's Degree in Computer Science</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>Contact</h2>
+                <div class="contact-links">
+                    <a href="mailto:nkndmob@gmail.com">Email</a>
+                    <a href="https://github.com/brokenspagheti">GitHub</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container = document.getElementById('canvas-container');
+        const cvContainer = document.getElementById('cv-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Create Haldiram's packet (box with textures)
+        const geometry = new THREE.BoxGeometry(2, 3, 0.5);
+        
+        // Create materials for each face
+        const materials = [
+            new THREE.MeshBasicMaterial({ color: 0xFDB813 }), // right
+            new THREE.MeshBasicMaterial({ color: 0xFDB813 }), // left
+            new THREE.MeshBasicMaterial({ color: 0xFF6B35 }), // top
+            new THREE.MeshBasicMaterial({ color: 0xFF6B35 }), // bottom
+            new THREE.MeshBasicMaterial({ color: 0xFFD700 }), // front
+            new THREE.MeshBasicMaterial({ color: 0xFFD700 })  // back
+        ];
+
+        const packet = new THREE.Mesh(geometry, materials);
+        scene.add(packet);
+
+        // Add text to the packet
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 768;
+        const ctx = canvas.getContext('2d');
+        
+        // Draw Haldiram's style design
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(0, 0, 512, 768);
+        
+        ctx.fillStyle = '#FF6B35';
+        ctx.font = 'bold 60px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText("HALDIRAM'S", 256, 150);
+        
+        ctx.font = 'bold 80px Arial';
+        ctx.fillText('ALOO', 256, 300);
+        ctx.fillText('BHUJIYA', 256, 400);
+        
+        ctx.font = '30px Arial';
+        ctx.fillStyle = '#333';
+        ctx.fillText('Click to Open CV', 256, 550);
+        ctx.fillText('🌶️ Spicy Portfolio 🌶️', 256, 600);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        materials[4].map = texture;
+        materials[4].needsUpdate = true;
+
+        camera.position.z = 5;
+
+        let scrollY = 0;
+        let targetRotationY = 0;
+
+        // Scroll event
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            targetRotationY = scrollY * 0.01;
+        });
+
+        // Click event
+        container.addEventListener('click', () => {
+            container.classList.add('hidden');
+            cvContainer.classList.add('visible');
+        });
+
+        function closeCV() {
+            container.classList.remove('hidden');
+            cvContainer.classList.remove('visible');
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Smooth rotation based on scroll
+            packet.rotation.y += (targetRotationY - packet.rotation.y) * 0.1;
+            packet.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
+            
+            // Floating animation
+            packet.position.y = Math.sin(Date.now() * 0.001) * 0.2;
+            
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Make closeCV global
+        window.closeCV = closeCV;
+
+        animate();
+    </script>
+</body>
+</html>
