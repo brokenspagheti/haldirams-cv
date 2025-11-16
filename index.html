@@ -165,6 +165,14 @@
             text-decoration: underline;
             margin-right: 20px;
         }
+
+        .age-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -177,61 +185,73 @@
         <button class="close-btn" onclick="closeCV()">✕ Close</button>
         <div class="cv-content">
             <div class="cv-header">
-                <h1>Nikhil XD</h1>
-                <p>Full Stack Developer & Creative Technologist</p>
+                <h1>Nikhil S Krishnan</h1>
+                <p>Computer Science Student & ML Enthusiast</p>
+                <div class="age-badge">29 years old</div>
             </div>
 
             <div class="cv-section">
                 <h2>About Me</h2>
-                <p>Passionate developer with expertise in creating interactive web experiences. I blend creativity with technical skills to build engaging digital products.</p>
+                <p>Computer Science student passionate about machine learning and artificial intelligence. Currently exploring deep learning frameworks and building practical ML applications.</p>
             </div>
 
             <div class="cv-section">
                 <h2>Skills</h2>
                 <div class="skills-grid">
                     <div class="skill-item">
-                        <h3>Frontend</h3>
-                        <p>HTML, CSS, JavaScript, Three.js, React</p>
+                        <h3>Machine Learning</h3>
+                        <p>PyTorch, Neural Networks, Model Training</p>
                     </div>
                     <div class="skill-item">
-                        <h3>Backend</h3>
-                        <p>Node.js, Python, APIs</p>
+                        <h3>Programming</h3>
+                        <p>Python, Data Structures, Algorithms</p>
                     </div>
                     <div class="skill-item">
-                        <h3>3D & Graphics</h3>
-                        <p>Three.js, WebGL, 3D Modeling</p>
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript, Three.js</p>
                     </div>
                     <div class="skill-item">
-                        <h3>Tools</h3>
-                        <p>Git, GitHub, VS Code</p>
+                        <h3>Tools & Frameworks</h3>
+                        <p>Git, Jupyter, NumPy, Pandas</p>
                     </div>
                 </div>
             </div>
 
             <div class="cv-section">
+                <h2>Technical Expertise</h2>
+                <ul>
+                    <li>Deep Learning with PyTorch</li>
+                    <li>Machine Learning Fundamentals</li>
+                    <li>Data Preprocessing & Analysis</li>
+                    <li>Model Training & Evaluation</li>
+                    <li>Computer Vision Basics</li>
+                    <li>Natural Language Processing</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
                 <h2>Projects</h2>
-                <h3>Interactive 3D Portfolio</h3>
-                <p>Created immersive web experiences using Three.js and modern web technologies.</p>
+                <h3>ML Model Implementations</h3>
+                <p>Built and trained various machine learning models using PyTorch for classification and regression tasks.</p>
                 
-                <h3>Y2K Portfolio Website</h3>
-                <p>Nostalgic portfolio design with rotating 3D elements and classic web aesthetics.</p>
+                <h3>Interactive 3D Portfolio</h3>
+                <p>Created immersive web experiences using Three.js, combining creative design with technical implementation.</p>
                 
                 <h3>Haldiram's CV Experience</h3>
-                <p>Innovative CV presentation using 3D product visualization and scroll interactions.</p>
+                <p>Innovative CV presentation using 3D visualization and scroll-based interactions.</p>
             </div>
 
             <div class="cv-section">
                 <h2>Education</h2>
                 <h3>Computer Science</h3>
-                <p>Bachelor's Degree in Computer Science</p>
+                <p>Currently pursuing Computer Science degree with focus on Machine Learning and AI</p>
             </div>
 
             <div class="cv-section">
                 <h2>Contact</h2>
                 <div class="contact-links">
-                    <a href="mailto:nkndmob@gmail.com">Email</a>
+                    <a href="mailto:nkndmob@gmail.com">nkndmob@gmail.com</a>
                     <a href="https://github.com/brokenspagheti">GitHub</a>
-                    <a href="#">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -287,7 +307,7 @@
         ctx.font = '30px Arial';
         ctx.fillStyle = '#333';
         ctx.fillText('Click to Open CV', 256, 550);
-        ctx.fillText('🌶️ Spicy Portfolio 🌶️', 256, 600);
+        ctx.fillText('🌶️ Nikhil S Krishnan 🌶️', 256, 600);
 
         const texture = new THREE.CanvasTexture(canvas);
         materials[4].map = texture;
